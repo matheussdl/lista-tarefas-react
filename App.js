@@ -10,14 +10,31 @@ function App() {
 }, [tasks]);
 
   function addTask() {
-    setTasks([...tasks, input]);
+    setTasks([
+  ...tasks,
+  {
+    text: input,
+    done: false
+  }
+]);
     setInput("");
   }
+
   function removeTask(indexToRemove) {
-  setTasks(
-    tasks.filter((_, index) => index !== indexToRemove)
-  );
-}
+    setTasks(
+      tasks.filter((_, index) => index !== indexToRemove)
+    );
+  } 
+
+  function toggleTask(indexToToggle) {
+    setTasks(
+      tasks.map((task, index) =>
+        index === indexToToggle
+          ? { ...task, done: !task.done }
+          : task
+      )
+    );
+  }
 
   return (
     <div>
@@ -37,10 +54,12 @@ function App() {
       <ul>
         {tasks.map((task, index) => (
           <Task
-  key={index}
-  text={task}
-  remove={() => removeTask(index)}
-/>
+            key={index}
+            text={task.text}
+            done={task.done}
+            remove={() => removeTask(index)}
+            toggle={() => toggleTask(index)}
+          />
         ))}
       </ul>
     </div>

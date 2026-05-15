@@ -14,7 +14,9 @@ function App() {
     setInput("");
   }
   function removeTask(indexToRemove) {
-  setTasks(tasks.filter((_, index) => index !== indexToRemove));
+  setTasks(
+    tasks.filter((_, index) => index !== indexToRemove)
+  );
 }
 
   return (
@@ -34,7 +36,11 @@ function App() {
 
       <ul>
         {tasks.map((task, index) => (
-          <Task key={index} text={task} />
+          <Task
+  key={index}
+  text={task}
+  remove={() => removeTask(index)}
+/>
         ))}
       </ul>
     </div>

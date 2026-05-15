@@ -13,6 +13,9 @@ function App() {
     setTasks([...tasks, input]);
     setInput("");
   }
+  function removeTask(indexToRemove) {
+  setTasks(tasks.filter((_, index) => index !== indexToRemove));
+}
 
   return (
     <div>
@@ -26,6 +29,8 @@ function App() {
       <button onClick={addTask}>
         Adicionar
       </button>
+
+      <p>Total de tarefas: {tasks.length}</p>
 
       <ul>
         {tasks.map((task, index) => (

@@ -6,17 +6,17 @@ function App() {
   const [input, setInput] = useState("");
 
   useEffect(() => {
-  console.log("Lista atualizada:", tasks);
-}, [tasks]);
+    console.log("Lista atualizada:", tasks);
+  }, [tasks]);
 
   function addTask() {
     setTasks([
-  ...tasks,
-  {
-    text: input,
-    done: false
-  }
-]);
+      ...tasks,
+      {
+        text: input,
+        done: false
+      }
+    ]);
     setInput("");
   }
 
